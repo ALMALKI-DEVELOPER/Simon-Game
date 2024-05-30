@@ -10,8 +10,20 @@ var started = false ;
 
 //-----------------------------------------------------------------------------//
 
-//begin a game by pressed any button on a keyboard.
+//begin a game by pressed any button on a keyboard for laptop.
 $(document).keydown(function(){
+  if(!started){
+   $("#level-title").text("Level " + level); // statr level 0.
+   setTimeout(function(){
+    nextSequence(); 
+   },500);
+   started = true;
+  }
+ });
+//---------------------------------------------------------------------------//
+//begin a game by pressed any button on a keyboard for mobile.
+
+ $(".start-button").click(function(){
   if(!started){
    $("#level-title").text("Level " + level); // statr level 0.
    setTimeout(function(){
@@ -53,7 +65,7 @@ function checkAnswer(currentLevel){
 
     } else {
        
-        $("#level-title").text("Game Over Press Any Key to Restart");
+        $("#level-title").text("Game Over Press Start Key to Restart");
 
         audio = new Audio("sounds/wrong.mp3");
         audio.play();
